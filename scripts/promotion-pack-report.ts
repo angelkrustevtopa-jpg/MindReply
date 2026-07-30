@@ -36,7 +36,7 @@ const copyBank = [
   "Pressure is not a souvenir.",
 ];
 
-function reportMarkdown() {
+function generatePromotionReportMarkdown() {
   const now = new Date().toISOString();
   return [
     "# MindReply Promotion Pack",
@@ -62,4 +62,4 @@ function reportMarkdown() {
   ].join("\n");
 }
 
-console.log(reportMarkdown());
+console.log(generatePromotionReportMarkdown());

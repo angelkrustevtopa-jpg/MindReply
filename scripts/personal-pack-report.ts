@@ -15,15 +15,15 @@ type RepoSnapshot = {
   actor?: string;
 };
 
-const env = process.env;
-const repo = env.GITHUB_REPOSITORY || "Mind-Reply/MindReply";
-const branch = env.GITHUB_REF_NAME || env.VERCEL_GIT_COMMIT_REF || "main";
-const sha = env.GITHUB_SHA || env.VERCEL_GIT_COMMIT_SHA || "unknown";
-const enabled = env.MINDREPLY_REPORT_ENABLED === "true";
-const dryRun = env.MINDREPLY_REPORT_DRY_RUN !== "false";
-const personalOnly = env.MINDREPLY_REPORT_PERSONAL_ONLY !== "false";
-const requireDelivery = env.MINDREPLY_REPORT_REQUIRE_DELIVERY === "true";
-const requestedChannels = parseChannels(env.MINDREPLY_REPORT_CHANNELS || "console");
+const reportEnv = process.env;
+const repo = reportEnv.GITHUB_REPOSITORY || "Mind-Reply/MindReply";
+const branch = reportEnv.GITHUB_REF_NAME || reportEnv.VERCEL_GIT_COMMIT_REF || "main";
+const sha = reportEnv.GITHUB_SHA || reportEnv.VERCEL_GIT_COMMIT_SHA || "unknown";
+const enabled = reportEnv.MINDREPLY_REPORT_ENABLED === "true";
+const dryRun = reportEnv.MINDREPLY_REPORT_DRY_RUN !== "false";
+const personalOnly = reportEnv.MINDREPLY_REPORT_PERSONAL_ONLY !== "false";
+const requireDelivery = reportEnv.MINDREPLY_REPORT_REQUIRE_DELIVERY === "true";
+const requestedChannels = parseChannels(reportEnv.MINDREPLY_REPORT_CHANNELS || "console");
 
 const operatingLanes = [
   "Front door voice",
@@ -78,11 +78,11 @@ function shortSha(value: string) {
 }
 
 function emailRecipients() {
-  return [...new Set([...parseList(env.MINDREPLY_REPORT_EMAILS), ...parseList(env.MINDREPLY_REPORT_EMAIL)])];
+  return [...new Set([...parseList(reportEnv.MINDREPLY_REPORT_EMAILS), ...parseList(reportEnv.MINDREPLY_REPORT_EMAIL)])];
 }
 
 function laneReport() {
-  const requestedCount = Number.parseInt(env.MINDREPLY_REPORT_AGENT_COUNT || "25", 10);
+  const requestedCount = Number.parseInt(reportEnv.MINDREPLY_REPORT_AGENT_COUNT || "25", 10);
   const count = Number.isFinite(requestedCount) && requestedCount > 0 ? Math.min(requestedCount, operatingLanes.length) : operatingLanes.length;
   return operatingLanes.slice(0, count).map((lane, index) => `- ${String(index + 1).padStart(2, "0")} ${lane}: watching, reporting, and waiting for a real source before claiming movement.`);
 }
@@ -93,10 +93,10 @@ async function fetchRepoSnapshot(): Promise<RepoSnapshot> {
     branch,
     sha,
     status: "not checked",
-    actor: env.GITHUB_ACTOR,
+    actor: reportEnv.GITHUB_ACTOR,
   };
 
-  const token = env.GITHUB_TOKEN;
+  const token = reportEnv.GITHUB_TOKEN;
   if (!token || sha === "unknown") return snapshot;
 
   try {
@@ -130,9 +130,9 @@ async function fetchRepoSnapshot(): Promise<RepoSnapshot> {
   }
 }
 
-function reportMarkdown(snapshot: RepoSnapshot) {
-  const siteUrl = env.NEXT_PUBLIC_SITE_URL || "https://www.mind-reply.com";
-  const label = env.MINDREPLY_REPORT_PERSONAL_LABEL || "Angel personal pack";
+function generateReportMarkdown(snapshot: RepoSnapshot) {
+  const siteUrl = reportEnv.NEXT_PUBLIC_SITE_URL || "https://www.mind-reply.com";
+  const label = reportEnv.MINDREPLY_REPORT_PERSONAL_LABEL || "Angel personal pack";
   const now = new Date().toISOString();
   const statusLine = snapshot.statusUrl ? `${snapshot.status} (${snapshot.statusUrl})` : snapshot.status;
   const recipients = emailRecipients();
@@ -162,7 +162,7 @@ function reportMarkdown(snapshot: RepoSnapshot) {
     "",
     "## Delivery",
     `- Email recipients: ${recipients.length ? recipients.join(", ") : "not configured"}`,
-    `- Slack: ${env.MINDREPLY_SLACK_WEBHOOK_URL ? "configured" : "not configured"}`,
+    `- Slack: ${reportEnv.MINDREPLY_SLACK_WEBHOOK_URL ? "configured" : "not configured"}`,
     "",
     "## Gift material",
     "Use this line in MRagent copy: 'Read the pressure. Move with grace. Keep the receipt narrow.'",
@@ -180,7 +180,7 @@ function textFromMarkdown(markdown: string) {
 }
 
 async function sendSlack(markdown: string): Promise<SendResult> {
-  const webhookUrl = env.MINDREPLY_SLACK_WEBHOOK_URL;
+  const webhookUrl = reportEnv.MINDREPLY_SLACK_WEBHOOK_URL;
   if (!webhookUrl) return { channel: "slack", status: "skipped", detail: "MINDREPLY_SLACK_WEBHOOK_URL is not configured." };
   if (!enabled) return { channel: "slack", status: "skipped", detail: "MINDREPLY_REPORT_ENABLED is not true." };
   if (dryRun) return { channel: "slack", status: "dry_run", detail: "Slack payload prepared but not sent." };
@@ -196,16 +196,16 @@ async function sendSlack(markdown: string): Promise<SendResult> {
 }
 
 function emailAllowed(email: string) {
-  const allowlist = parseList(env.MINDREPLY_REPORT_EMAIL_ALLOWLIST).map((item) => item.toLowerCase());
+  const allowlist = parseList(reportEnv.MINDREPLY_REPORT_EMAIL_ALLOWLIST).map((item) => item.toLowerCase());
 
   if (!personalOnly) return true;
   return allowlist.length > 0 && allowlist.includes(email.toLowerCase());
 }
 
 async function sendEmail(markdown: string): Promise<SendResult> {
-  const apiKey = env.RESEND_API_KEY;
+  const apiKey = reportEnv.RESEND_API_KEY;
   const to = emailRecipients();
-  const from = env.MINDREPLY_REPORT_FROM;
+  const from = reportEnv.MINDREPLY_REPORT_FROM;
 
   if (!apiKey || !to.length || !from) {
     return { channel: "email", status: "skipped", detail: "RESEND_API_KEY, MINDREPLY_REPORT_EMAILS, or MINDREPLY_REPORT_FROM is missing." };
@@ -245,7 +245,7 @@ function deliveryMissing(results: SendResult[]) {
 
 async function main() {
   const snapshot = await fetchRepoSnapshot();
-  const markdown = reportMarkdown(snapshot);
+  const markdown = generateReportMarkdown(snapshot);
   const results: SendResult[] = [];
 
   if (requestedChannels.includes("console")) {

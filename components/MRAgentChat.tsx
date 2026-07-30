@@ -23,13 +23,21 @@ type AgentResponse = {
 
 type MRAgentChatProps = {
   compact?: boolean;
+  mode?: "executive" | "administrative";
 };
 
-const starter: ChatMessage = {
-  id: "mra-welcome",
+const starterExecutive: ChatMessage = {
+  id: "mra-welcome-exec",
   role: "assistant",
   content:
     "Come here. Put the charged thing down for a second. I will read the pressure beneath it, name what your mind is protecting, and hand you one composed move.",
+};
+
+const starterAdministrative: ChatMessage = {
+  id: "mra-welcome-admin",
+  role: "assistant",
+  content:
+    "I'm your Administrative Twin. Drop your meeting notes, email drafts, or voice memos here. I'll triage the pressure and prepare your next move.",
 };
 
 const readingPhases = ["listening under the words", "finding the pressure pattern", "checking the risk gate", "choosing one clean move"];
@@ -97,9 +105,10 @@ async function requestMindRead(text: string): Promise<Partial<AgentResponse> & {
   return adaptIntakeResponse(intakeData as DecisionResponse);
 }
 
-export default function MRAgentChat({ compact = false }: MRAgentChatProps) {
+export default function MRAgentChat({ compact = false, mode = "executive" }: MRAgentChatProps) {
+  const starter = mode === "administrative" ? starterAdministrative : starterExecutive;
   const [messages, setMessages] = useState<ChatMessage[]>([starter]);
-  const [input, setInput] = useState("I need to answer someone gently, but I feel pressure to decide too fast.");
+  const [input, setInput] = useState(mode === "administrative" ? "Summarize my last meeting and draft a follow-up email." : "I need to answer someone gently, but I feel pressure to decide too fast.");
   const [loading, setLoading] = useState(false);
   const [phaseIndex, setPhaseIndex] = useState(0);
   const [error, setError] = useState("");
@@ -261,7 +270,7 @@ export default function MRAgentChat({ compact = false }: MRAgentChatProps) {
               }}
               rows={compact ? 2 : 3}
               className="min-h-14 flex-1 resize-none bg-transparent px-3 py-2 text-sm leading-6 text-[#f8f5f0] outline-none placeholder:text-[#70819b]"
-              placeholder="Drop the message, hesitation, or charged moment here."
+              placeholder={mode === "administrative" ? "Drop your meeting notes, email drafts, or voice memos here." : "Drop the message, hesitation, or charged moment here."}
             />
             <button
               type="button"

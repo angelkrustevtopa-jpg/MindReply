@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import {
   Activity,
@@ -16,69 +18,72 @@ import {
   Sparkles,
   Workflow,
   Zap,
+  Smartphone,
+  Cpu
 } from "lucide-react";
 import MRAgentChat from "@/components/MRAgentChat";
 
 const navItems = [
   { label: "Platform", href: "#platform" },
   { label: "Workflow", href: "#workflow" },
-  { label: "Promotion", href: "#promotion" },
+  { label: "Admin Assistant", href: "/admin" },
+  { label: "Pricing", href: "#pricing" },
   { label: "Proof", href: "#proof" },
 ];
 
 const heroStats = [
   { label: "Mind Read", value: "1 clear read", icon: Brain },
-  { label: "Reports", value: "30 min cadence", icon: Clock },
-  { label: "Receipts", value: "raw text stays narrow", icon: FileText },
+  { label: "PWA Ready", value: "Install as App", icon: Smartphone },
+  { label: "Agentic AI", value: "Autonomous tasks", icon: Cpu },
 ];
 
 const platformLayers = [
   {
-    title: "Pressure intake",
-    copy: "The user drops the charged text, half-formed ask, or private hesitation into MRagent without cleaning it first.",
+    title: "Administrative Intake",
+    copy: "Drop your meeting notes, email drafts, or voice memos. The assistant triages the pressure and prepares your next move.",
     detail: "Input",
     icon: MessageCircle,
   },
   {
-    title: "Behavioral read",
-    copy: "The agent names posture, risk, protection, timing, and the calmer move. It reads patterns, not magic.",
-    detail: "Mind Read",
+    title: "Executive Mind Read",
+    copy: "The agent identifies hidden risks, posture protection, and the most profitable path forward for your business.",
+    detail: "Analysis",
     icon: Radar,
   },
   {
-    title: "Action composer",
-    copy: "The answer comes back as one synthesis, one recommended action, and one usable line when the moment needs language.",
-    detail: "Next move",
+    title: "Action Twin",
+    copy: "Receive one synthesis, one recommended action, and a drafted reply that sounds exactly like you—only calmer.",
+    detail: "Execution",
     icon: Zap,
   },
   {
-    title: "Quiet receipt",
-    copy: "The system keeps a narrow summary and delivery proof without exposing the original pressure by default.",
-    detail: "Proof",
-    icon: LockKeyhole,
+    title: "PWA Mobility",
+    copy: "Install MindReply on your phone. Access your executive nervous system anywhere, even offline.",
+    detail: "Access",
+    icon: Smartphone,
   },
 ];
 
 const workflow = [
   {
     step: "01",
-    title: "Place the pressure",
-    copy: "Paste the message, decision, or feeling. The UI keeps the surface focused so the user does not have to turn the moment into a perfect prompt.",
+    title: "Sync your pressure",
+    copy: "Paste the message or record a voice note. The PWA interface is built for fast, one-handed administrative intake.",
   },
   {
     step: "02",
-    title: "Let the read slow down",
-    copy: "MRagent responds in stages: reading, pressure map, quieter read, then one move. That rhythm makes the answer feel considered instead of dumped.",
+    title: "Agentic Processing",
+    copy: "The AI assistant doesn't just chat; it maps the pressure, checks your playbooks, and prepares real-world actions.",
   },
   {
     step: "03",
-    title: "Act once",
-    copy: "The output is structured for a real next step: synthesis, mind read, recommended action, risk gate, memory summary, and receipt.",
+    title: "One Composed Move",
+    copy: "Get the exact line you need to send or the specific task you need to delegate. No more decision fatigue.",
   },
   {
     step: "04",
-    title: "Report what moved",
-    copy: "The pack and report jobs show delivery readiness, Vercel status, promotion preparation, and revenue truth without inventing activity.",
+    title: "Daily Pulse Reports",
+    copy: "Receive 30-minute updates on your business readiness, revenue truth, and pending administrative actions.",
   },
 ];
 
@@ -101,17 +106,17 @@ const promotionLanes = [
 ];
 
 const proofItems = [
-  "Vercel deploy guard keeps non-main branches from burning quota.",
-  "Speed Insights is already mounted in the app layout for production visibility.",
-  "Reports can send through configured email or Slack channels when the keys are present.",
-  "Figma/FigJam/Remotion are treated as design and launch assets, not blockers for the web app.",
+  "PWA manifest and service worker enabled for mobile-first installation.",
+  "Speed Insights and Vercel Analytics mounted for production performance.",
+  "Secure intake layer protects sensitive executive communications.",
+  "Agentic AI workflows for automated administrative support.",
 ];
 
 const packageRows = [
-  { label: "Website completion", value: "Full front end, MRagent, pack, privacy, MCP", icon: CheckCircle2 },
-  { label: "Advertising asset", value: "Safe campaign queue and review-first launch language", icon: Sparkles },
-  { label: "Automation lane", value: "30-minute reporting with delivery proof and blockers", icon: Activity },
-  { label: "Customer value", value: "Warm decision support for tense messages and next moves", icon: Bot },
+  { label: "PWA Platform", value: "Full mobile-ready administrative assistant", icon: CheckCircle2 },
+  { label: "Executive AI", value: "Mainstream agentic workflows for founders", icon: Sparkles },
+  { label: "Revenue Engine", value: "Monetization-ready subscription infrastructure", icon: Activity },
+  { label: "Decision Layer", value: "Private operating twin for high-stakes moves", icon: Bot },
 ];
 
 const structuredData = {
@@ -119,10 +124,10 @@ const structuredData = {
   "@type": "SoftwareApplication",
   name: "MindReply",
   applicationCategory: "BusinessApplication",
-  operatingSystem: "Web",
+  operatingSystem: "Web, Android, iOS",
   url: "https://www.mind-reply.com/",
-  description: "MindReply is an operating layer between pressure and action, with MRagent for behavioral reads, receipts, reporting, and promotion-ready launch support.",
-  featureList: ["MRagent", "Behavioral read", "Quiet receipt", "30-minute reporting", "Promotion queue", "Vercel proof"],
+  description: "MindReply is an AI-powered Executive Assistant and Decision Infrastructure Layer for founders and agencies.",
+  featureList: ["Administrative AI Assistant", "PWA Support", "Executive Mind Read", "Agentic Workflows", "Revenue Readiness"],
   brand: {
     "@type": "Brand",
     name: "MindReply",
@@ -133,7 +138,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-[#f7f4ed] text-[#122033]">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
-      <header className="border-b border-[#122033]/10 bg-[#f7f4ed]/95 px-4 py-4 backdrop-blur md:px-8">
+      <header className="border-b border-[#122033]/10 bg-[#f7f4ed]/95 px-4 py-4 backdrop-blur md:px-8 sticky top-0 z-50">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4">
           <Link href="/" className="flex items-center gap-3">
             <span className="grid h-10 w-10 place-items-center rounded-lg bg-[#122033] font-serif text-lg font-bold text-[#e2b757]">M</span>
@@ -141,17 +146,17 @@ export default function Home() {
           </Link>
           <nav aria-label="Primary" className="hidden items-center gap-2 lg:flex">
             {navItems.map((item) => (
-              <a key={item.href} href={item.href} className="rounded-full px-4 py-2 text-sm font-semibold text-[#4d5c6f] transition hover:bg-white hover:text-[#122033]">
+              <Link key={item.href} href={item.href} className="rounded-full px-4 py-2 text-sm font-semibold text-[#4d5c6f] transition hover:bg-white hover:text-[#122033]">
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
           <div className="flex items-center gap-2">
-            <Link href="/pack" className="hidden rounded-full border border-[#122033]/15 px-4 py-2 text-sm font-semibold text-[#122033] transition hover:border-[#2f6f72] md:inline-flex">
-              Pack
+            <Link href="/admin" className="hidden rounded-full border border-[#122033]/15 px-4 py-2 text-sm font-semibold text-[#122033] transition hover:border-[#2f6f72] md:inline-flex">
+              Open Assistant
             </Link>
             <Link href="/agent" className="rounded-full bg-[#122033] px-4 py-2 text-sm font-semibold text-[#f8f5f0] transition hover:bg-[#1c3150]">
-              Open MRagent
+              Try Mind Read
             </Link>
           </div>
         </div>
@@ -162,20 +167,20 @@ export default function Home() {
           <div className="py-4">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#e2b757]/35 bg-[#e2b757]/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-[#e2b757]">
               <Sparkles aria-hidden className="h-4 w-4" />
-              Executive nervous system
+              Mainstream Executive AI
             </div>
             <h1 className="mt-7 max-w-3xl font-serif text-5xl font-bold leading-[0.94] md:text-7xl">
-              MindReply turns pressure into one composed next move.
+              Your Administrative Twin for the Next Move.
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-[#d9e3e7] md:text-lg">
-              MRagent is the warm front door. The platform behind it reads posture, protects privacy, prepares launch material, and reports only what actually moved.
+              MindReply is now a full-scale AI Administrative Assistant. Install it as a PWA on your phone and let your operating twin handle the pressure.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/agent" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#e2b757] px-5 py-3 text-sm font-bold text-[#122033] transition hover:bg-[#f0cf7a]">
-                Try the Mind Read <ArrowRight aria-hidden className="h-4 w-4" />
+              <Link href="/admin" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#e2b757] px-5 py-3 text-sm font-bold text-[#122033] transition hover:bg-[#f0cf7a]">
+                Launch Assistant <ArrowRight aria-hidden className="h-4 w-4" />
               </Link>
               <Link href="/pack" className="inline-flex items-center justify-center rounded-full border border-white/25 px-5 py-3 text-sm font-bold text-[#f8f5f0] transition hover:border-[#e2b757] hover:text-[#e2b757]">
-                View completion pack
+                View Revenue Pack
               </Link>
             </div>
             <div className="mt-8 grid gap-3 sm:grid-cols-3">
@@ -200,17 +205,99 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="platform" className="border-b border-[#122033]/10 bg-white px-4 py-12 md:px-8">
+      <section id="pricing" className="bg-[#f7f4ed] px-4 py-14 md:px-8 border-b border-[#122033]/10">
+        <div className="mx-auto max-w-7xl">
+          <div className="text-center mb-12">
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#2f6f72]">Pricing</p>
+            <h2 className="mt-4 font-serif text-4xl font-bold leading-tight md:text-5xl">
+              High-revenue operating packs.
+            </h2>
+          </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            <div className="rounded-2xl border border-[#122033]/10 bg-white p-8 shadow-sm">
+              <h3 className="font-serif text-2xl font-bold">Founder Pack</h3>
+              <p className="mt-2 text-sm text-[#59687b]">For solo founders and operators.</p>
+              <div className="mt-6 flex items-baseline gap-1">
+                <span className="text-4xl font-bold">$49</span>
+                <span className="text-sm text-[#59687b]">/mo</span>
+              </div>
+              <ul className="mt-8 space-y-4 text-sm text-[#59687b]">
+                <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#2f6f72]" /> 50 Mind Reads / mo</li>
+                <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#2f6f72]" /> PWA Mobile Access</li>
+                <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#2f6f72]" /> Basic Admin Assistant</li>
+              </ul>
+              <button 
+                onClick={() => {
+                  fetch('/api/checkout', {
+                    method: 'POST',
+                    body: JSON.stringify({ plan: 'founder' }),
+                  }).then(res => res.json()).then(data => {
+                    if (data.url) window.location.href = data.url;
+                  });
+                }}
+                className="mt-8 block w-full rounded-full bg-[#122033] py-3 text-center text-sm font-bold text-[#f8f5f0] transition hover:bg-[#1c3150]"
+              >
+                Get Started
+              </button>
+            </div>
+            <div className="rounded-2xl border-2 border-[#e2b757] bg-[#122033] p-8 shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-[#e2b757] text-[#122033] px-4 py-1 text-[10px] font-bold uppercase tracking-wider rounded-bl-lg">Most Popular</div>
+              <h3 className="font-serif text-2xl font-bold text-[#f8f5f0]">Agency Pack</h3>
+              <p className="mt-2 text-sm text-[#d9e3e7]/70">For growing agencies and teams.</p>
+              <div className="mt-6 flex items-baseline gap-1 text-[#f8f5f0]">
+                <span className="text-4xl font-bold">$149</span>
+                <span className="text-sm text-[#d9e3e7]/70">/mo</span>
+              </div>
+              <ul className="mt-8 space-y-4 text-sm text-[#d9e3e7]/70">
+                <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#e2b757]" /> Unlimited Mind Reads</li>
+                <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#e2b757]" /> Full Agentic Workflows</li>
+                <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#e2b757]" /> Priority Admin Twin</li>
+                <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#e2b757]" /> Custom Playbooks</li>
+              </ul>
+              <button 
+                onClick={() => {
+                  fetch('/api/checkout', {
+                    method: 'POST',
+                    body: JSON.stringify({ plan: 'agency' }),
+                  }).then(res => res.json()).then(data => {
+                    if (data.url) window.location.href = data.url;
+                  });
+                }}
+                className="mt-8 block w-full rounded-full bg-[#e2b757] py-3 text-center text-sm font-bold text-[#122033] transition hover:bg-[#f0cf7a]"
+              >
+                Get Started
+              </button>
+            </div>
+            <div className="rounded-2xl border border-[#122033]/10 bg-white p-8 shadow-sm">
+              <h3 className="font-serif text-2xl font-bold">Enterprise</h3>
+              <p className="mt-2 text-sm text-[#59687b]">For high-stakes organizations.</p>
+              <div className="mt-6 flex items-baseline gap-1">
+                <span className="text-4xl font-bold">Custom</span>
+              </div>
+              <ul className="mt-8 space-y-4 text-sm text-[#59687b]">
+                <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#2f6f72]" /> Dedicated AI Instance</li>
+                <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#2f6f72]" /> White-glove Onboarding</li>
+                <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#2f6f72]" /> API & MCP Integration</li>
+              </ul>
+              <Link href="/contact" className="mt-8 block w-full rounded-full border border-[#122033]/15 py-3 text-center text-sm font-bold text-[#122033] transition hover:border-[#2f6f72]">
+                Contact Sales
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="proof" className="border-b border-[#122033]/10 bg-[#fbfaf6] px-4 py-14 md:px-8">
         <div className="mx-auto max-w-7xl">
           <div className="flex flex-col justify-between gap-5 md:flex-row md:items-end">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#2f6f72]">Platform layers</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#2f6f72]">Administrative Layers</p>
               <h2 className="mt-4 max-w-2xl font-serif text-4xl font-bold leading-tight md:text-5xl">
-                The site now shows the full operating system, not only a chat window.
+                A mainstream operating system for founders.
               </h2>
             </div>
             <p className="max-w-md text-sm leading-7 text-[#59687b]">
-              The product story is simple: input enters quietly, the agent reads the pressure, the user receives one move, and the system records a narrow proof trail.
+              From inbox triage to meeting summaries, MindReply handles the administrative load so you can focus on high-revenue decisions.
             </p>
           </div>
           <div className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
@@ -234,12 +321,12 @@ export default function Home() {
       <section id="workflow" className="px-4 py-14 md:px-8">
         <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[0.72fr_1.28fr]">
           <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#9b7430]">How it works</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#9b7430]">PWA Workflow</p>
             <h2 className="mt-4 font-serif text-4xl font-bold leading-tight md:text-5xl">
-              Slow reply, sharp structure, one useful action.
+              Mobile-first, sharp structure, one useful action.
             </h2>
             <p className="mt-5 text-sm leading-7 text-[#59687b]">
-              The language is friendly and warm, but the system is deliberately strict about claims, privacy, and what counts as proof.
+              The PWA interface is designed for the founder on the move. Fast intake, instant reads, and one-tap actions.
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
@@ -258,13 +345,13 @@ export default function Home() {
         <div className="mx-auto max-w-7xl">
           <div className="grid gap-6 lg:grid-cols-[0.82fr_1.18fr] lg:items-end">
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#91d2c8]">Promotion readiness</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#91d2c8]">Revenue Readiness</p>
               <h2 className="mt-4 font-serif text-4xl font-bold leading-tight md:text-5xl">
-                MRadvertisingTeam becomes a review-first launch lane.
+                Turn administrative efficiency into revenue.
               </h2>
             </div>
             <p className="text-sm leading-7 text-[#d3e5e2]">
-              The front end can show ambition without unsafe automation: it can prepare platform copy, annual-pack angles, and proof language, while publishing still waits for connected accounts and explicit approval.
+              The platform prepares your launch material and tracks your revenue truth, ensuring every administrative move contributes to your bottom line.
             </p>
           </div>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
@@ -282,53 +369,20 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="proof" className="border-b border-[#122033]/10 bg-[#fbfaf6] px-4 py-14 md:px-8">
-        <div className="mx-auto grid max-w-7xl gap-8 lg:grid-cols-[1.05fr_0.95fr]">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-[#2f6f72]">Proof and observability</p>
-            <h2 className="mt-4 max-w-2xl font-serif text-4xl font-bold leading-tight md:text-5xl">
-              Built for visible progress, not invisible promises.
-            </h2>
-            <div className="mt-8 grid gap-3">
-              {proofItems.map((item) => (
-                <div key={item} className="flex gap-3 rounded-lg border border-[#122033]/10 bg-white p-4 text-sm leading-6 text-[#59687b]">
-                  <ShieldCheck aria-hidden className="mt-0.5 h-4 w-4 shrink-0 text-[#2f6f72]" />
-                  <span>{item}</span>
-                </div>
-              ))}
-            </div>
+      <footer className="bg-[#122033] text-[#f8f5f0] px-4 py-12 md:px-8 border-t border-white/10">
+        <div className="mx-auto max-w-7xl flex flex-col md:flex-row justify-between items-center gap-8">
+          <div className="flex items-center gap-3">
+            <span className="grid h-10 w-10 place-items-center rounded-lg bg-[#e2b757] font-serif text-lg font-bold text-[#122033]">M</span>
+            <span className="font-serif text-xl font-bold tracking-wide">MindReply</span>
           </div>
-          <div className="grid gap-4 sm:grid-cols-2">
-            {packageRows.map((row) => {
-              const Icon = row.icon;
-              return (
-                <article key={row.label} className="rounded-lg border border-[#122033]/10 bg-white p-5 shadow-sm shadow-[#122033]/5">
-                  <span className="grid h-11 w-11 place-items-center rounded-lg bg-[#122033] text-[#e2b757]"><Icon aria-hidden className="h-5 w-5" /></span>
-                  <p className="mt-5 text-xs font-bold uppercase tracking-[0.18em] text-[#9b7430]">{row.label}</p>
-                  <h3 className="mt-3 font-serif text-2xl font-bold leading-tight">{row.value}</h3>
-                </article>
-              );
-            })}
+          <div className="flex gap-8 text-sm font-semibold text-[#d9e3e7]/60">
+            <Link href="/trust" className="hover:text-[#e2b757] transition">Trust</Link>
+            <Link href="/privacy" className="hover:text-[#e2b757] transition">Privacy</Link>
+            <Link href="/contact" className="hover:text-[#e2b757] transition">Contact</Link>
           </div>
+          <p className="text-xs text-[#d9e3e7]/40">© 2026 MindReply. PWA Enabled. Mainstream Executive AI.</p>
         </div>
-      </section>
-
-      <section className="px-4 py-10 md:px-8">
-        <div className="mx-auto flex max-w-7xl flex-col gap-5 rounded-lg bg-[#122033] p-6 text-[#f8f5f0] md:flex-row md:items-center md:justify-between">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.24em] text-[#91d2c8]">Next safe move</p>
-            <h2 className="mt-3 font-serif text-3xl font-bold leading-tight">Open MRagent, run one pressure read, and keep the receipt narrow.</h2>
-          </div>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <Link href="/agent" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#e2b757] px-5 py-3 text-sm font-bold text-[#122033] transition hover:bg-[#f0cf7a]">
-              Start session <ArrowRight aria-hidden className="h-4 w-4" />
-            </Link>
-            <Link href="/privacy" className="inline-flex items-center justify-center rounded-full border border-white/25 px-5 py-3 text-sm font-bold text-[#f8f5f0] transition hover:border-[#e2b757] hover:text-[#e2b757]">
-              Privacy posture
-            </Link>
-          </div>
-        </div>
-      </section>
+      </footer>
     </main>
   );
 }
