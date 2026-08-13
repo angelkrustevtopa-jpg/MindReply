@@ -6,6 +6,7 @@ import {
   ArrowRight,
   Bot,
   Brain,
+  Building2,
   CheckCircle2,
   Clock,
   FileText,
@@ -26,6 +27,8 @@ import MRAgentChat from "@/components/MRAgentChat";
 const navItems = [
   { label: "Platform", href: "#platform" },
   { label: "Workflow", href: "#workflow" },
+  { label: "Real Estate", href: "/real-estate" },
+  { label: "News", href: "/news" },
   { label: "Admin Assistant", href: "/admin" },
   { label: "Pricing", href: "#pricing" },
   { label: "Proof", href: "#proof" },
@@ -38,6 +41,12 @@ const heroStats = [
 ];
 
 const platformLayers = [
+  {
+    title: "Real Estate Operations",
+    copy: "Automate property listings, market analysis, and client follow-ups with A11 Premium Agent integration.",
+    detail: "A11 Command",
+    icon: Building2,
+  },
   {
     title: "Administrative Intake",
     copy: "Drop your meeting notes, email drafts, or voice memos. The assistant triages the pressure and prepares your next move.",
