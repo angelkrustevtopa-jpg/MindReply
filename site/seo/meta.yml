@@ -19,6 +19,8 @@ indexing:
   allow:
     - /
     - /agent
+    - /real-estate
+    - /news
     - /privacy
   disallow:
     - /api/
