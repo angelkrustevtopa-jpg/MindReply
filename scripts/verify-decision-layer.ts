@@ -94,7 +94,6 @@ const publicFiles = [
   "site/design/figma-growth-loop.yml",
   "site/media/remotion-launch-brief.yml",
   "src/agents/prompts.md",
-  "docs/vision_dictionary.md",
   "docs/privacy_whitepaper_intro.md",
 ];
 
