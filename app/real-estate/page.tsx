@@ -47,15 +47,15 @@ export default function RealEstatePage() {
           <div className="max-w-3xl">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-medium text-white/60 mb-6">
               <Building2 className="w-3 h-3" />
-              <span>A11 Premium Agent Integration</span>
+              <span>A11 Executive Agent Integration</span>
             </div>
             <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-8 leading-[0.9]">
               Real Estate <br />
               <span className="text-white/40">Operations.</span>
             </h1>
             <p className="text-xl text-white/60 leading-relaxed mb-10 max-w-2xl">
-              Advanced Manus AI infrastructure for high-stakes property management. 
-              Automate listings, lead scoring, and market analysis with the A11 Command Center.
+              Advanced Manus Intelligence infrastructure for high-stakes property management. 
+              Manage listings, lead scoring, and market analysis with the A11 Command Center.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <button className="px-8 py-4 bg-white text-black font-bold rounded-sm hover:bg-white/90 transition-all flex items-center justify-center gap-2">
@@ -75,7 +75,7 @@ export default function RealEstatePage() {
               <TrendingUp className="w-8 h-8 mb-6 text-white" />
               <h3 className="text-xl font-bold mb-4 tracking-tight">Lead Scoring</h3>
               <p className="text-white/60 leading-relaxed">
-                Prioritize high-intent prospects using AI-driven behavioral analysis and market intent signals.
+                Prioritize high-intent prospects using Agentic-driven behavioral analysis and market intent signals.
               </p>
             </div>
             <div className="p-8 border border-white/10 rounded-sm bg-white/[0.02]">

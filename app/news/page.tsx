@@ -105,7 +105,7 @@ export default function NewsPage() {
             <Newspaper className="w-12 h-12 mx-auto mb-6 text-white/20" />
             <h3 className="text-2xl font-bold mb-4 tracking-tight">Stay in the Loop</h3>
             <p className="text-white/60 mb-8 max-w-md mx-auto">
-              Get the latest on AI real estate, executive infrastructure, and market innovations delivered to your inbox.
+              Get the latest on agentic real estate, executive infrastructure, and market innovations delivered to your inbox.
             </p>
             <div className="flex max-w-sm mx-auto gap-2">
               <input 

@@ -37,7 +37,7 @@ const navItems = [
 const heroStats = [
   { label: "Mind Read", value: "1 clear read", icon: Brain },
   { label: "PWA Ready", value: "Install as App", icon: Smartphone },
-  { label: "Agentic AI", value: "Autonomous tasks", icon: Cpu },
+  { label: "Agentic Workflows", value: "Autonomous tasks", icon: Cpu },
 ];
 
 const platformLayers = [
@@ -82,7 +82,7 @@ const workflow = [
   {
     step: "02",
     title: "Agentic Processing",
-    copy: "The AI assistant doesn't just chat; it maps the pressure, checks your playbooks, and prepares real-world actions.",
+    copy: "The Executive assistant doesn't just chat; it maps the pressure, checks your playbooks, and prepares real-world actions.",
   },
   {
     step: "03",
@@ -104,7 +104,7 @@ const promotionLanes = [
   },
   {
     title: "Promotion queue",
-    copy: "Separates drafted, approved, blocked, and sent material so automation never pretends an external account is connected.",
+    copy: "Separates drafted, approved, blocked, and sent material so autonomous workflows never pretends an external account is connected.",
     icon: Workflow,
   },
   {
@@ -118,12 +118,12 @@ const proofItems = [
   "PWA manifest and service worker enabled for mobile-first installation.",
   "Speed Insights and Vercel Analytics mounted for production performance.",
   "Secure intake layer protects sensitive executive communications.",
-  "Agentic AI workflows for automated administrative support.",
+  "Agentic Workflows for automated administrative support.",
 ];
 
 const packageRows = [
   { label: "PWA Platform", value: "Full mobile-ready administrative assistant", icon: CheckCircle2 },
-  { label: "Executive AI", value: "Mainstream agentic workflows for founders", icon: Sparkles },
+  { label: "Executive Intelligence", value: "Mainstream agentic workflows for founders", icon: Sparkles },
   { label: "Revenue Engine", value: "Monetization-ready subscription infrastructure", icon: Activity },
   { label: "Decision Layer", value: "Private operating twin for high-stakes moves", icon: Bot },
 ];
@@ -135,8 +135,8 @@ const structuredData = {
   applicationCategory: "BusinessApplication",
   operatingSystem: "Web, Android, iOS",
   url: "https://www.mind-reply.com/",
-  description: "MindReply is an AI-powered Executive Assistant and Decision Infrastructure Layer for founders and agencies.",
-  featureList: ["Administrative AI Assistant", "PWA Support", "Executive Mind Read", "Agentic Workflows", "Revenue Readiness"],
+  description: "MindReply is an Agentic-powered Executive Assistant and Decision Infrastructure Layer for founders and agencies.",
+  featureList: ["Administrative Intelligence Assistant", "PWA Support", "Executive Mind Read", "Agentic Workflows", "Revenue Readiness"],
   brand: {
     "@type": "Brand",
     name: "MindReply",
@@ -176,13 +176,13 @@ export default function Home() {
           <div className="py-4">
             <div className="inline-flex items-center gap-2 rounded-full border border-[#e2b757]/35 bg-[#e2b757]/10 px-4 py-2 text-xs font-bold uppercase tracking-[0.22em] text-[#e2b757]">
               <Sparkles aria-hidden className="h-4 w-4" />
-              Mainstream Executive AI
+              Mainstream Executive Intelligence
             </div>
             <h1 className="mt-7 max-w-3xl font-serif text-5xl font-bold leading-[0.94] md:text-7xl">
               Your Administrative Twin for the Next Move.
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-[#d9e3e7] md:text-lg">
-              MindReply is now a full-scale AI Administrative Assistant. Install it as a PWA on your phone and let your operating twin handle the pressure.
+              MindReply is now a full-scale Executive Administrative Assistant. Install it as a PWA on your phone and let your operating twin handle the pressure.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link href="/admin" className="inline-flex items-center justify-center gap-2 rounded-full bg-[#e2b757] px-5 py-3 text-sm font-bold text-[#122033] transition hover:bg-[#f0cf7a]">
@@ -284,7 +284,7 @@ export default function Home() {
                 <span className="text-4xl font-bold">Custom</span>
               </div>
               <ul className="mt-8 space-y-4 text-sm text-[#59687b]">
-                <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#2f6f72]" /> Dedicated AI Instance</li>
+                <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#2f6f72]" /> Dedicated Intelligence Instance</li>
                 <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#2f6f72]" /> White-glove Onboarding</li>
                 <li className="flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#2f6f72]" /> API & MCP Integration</li>
               </ul>
@@ -389,7 +389,7 @@ export default function Home() {
             <Link href="/privacy" className="hover:text-[#e2b757] transition">Privacy</Link>
             <Link href="/contact" className="hover:text-[#e2b757] transition">Contact</Link>
           </div>
-          <p className="text-xs text-[#d9e3e7]/40">© 2026 MindReply. PWA Enabled. Mainstream Executive AI.</p>
+          <p className="text-xs text-[#d9e3e7]/40">© 2026 MindReply. PWA Enabled. Mainstream Executive Intelligence.</p>
         </div>
       </footer>
     </main>
