@@ -18,9 +18,9 @@ export default function RealEstatePage() {
       <nav className="fixed top-0 z-50 w-full border-b border-white/10 bg-[#080808]/85 backdrop-blur-xl">
         <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-6">
           <Link href="/" className="group flex items-center gap-2" aria-label="MindReply home">
-            <div className="flex size-8 items-center justify-center rounded-sm bg-emerald-300 transition-transform duration-200 group-hover:rotate-45">
-              <div className="size-3 rounded-full bg-black" />
-            </div>
+            <span className="flex size-8 items-center justify-center rounded-sm bg-emerald-300/10 ring-1 ring-emerald-300/50 transition-transform duration-200 group-hover:rotate-3">
+              <img src="/assets/brand/mindreply-mark.svg" alt="MindReply logo" className="size-7" />
+            </span>
             <span className="text-xl font-bold tracking-tighter">MindReply</span>
           </Link>
           <div className="hidden items-center gap-7 md:flex">
